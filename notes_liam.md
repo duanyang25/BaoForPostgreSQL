@@ -1,4 +1,20 @@
-0. Only Postgresql 12 works under the current implementation.
+0. Only Postgresql 12 works under the current implementation. The VM version of loading dataset does not work. I installed an Ubuntu system, set up Postgresql 12 locally and manually loaded the dataset.
+```shell
+# https://stackoverflow.com/a/26735105
+# loggin Postgresql for the first time
+sudo gedit /etc/postgresql/12/main/pg_hba.conf
+```
+Then you can set the `postgres` user by `psql -U postgres` to log in and add the `imdb` user and create the `imdb` database.
+```shell
+# edit shared_buffers
+sudo gedit /etc/postgresql/12/main/postgresql.conf
+```
+Download the dump file from Harvard Dataverse https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/2QYZBT
+```shell
+# https://stackoverflow.com/a/61016512
+# load it
+pg_restore -d imdb -v -Fc foo.backup
+```
 1. On Makefiles under the `pg_extension` folder:   
 Since the implementation of "Bao" targets Postgresql 12, we need to change 
 ```shell
