@@ -34,7 +34,7 @@ So we need to use
 ```shell
 echo "shared_preload_libraries = 'pg_bao'" >> /etc/postgresql/12/main/postgresql.conf
 ```
-or manually append `"shared_preload_libraries = 'pg_bao'"` at the end of `/etc/postgresql/12/main/postgresql.conf` file.
+or manually append `shared_preload_libraries = 'pg_bao'` at the end of `/etc/postgresql/12/main/postgresql.conf` file.
 to load the built extension from above operation.
 3. In order to install `torch==1.5.0+cpu` from `-f https://download.pytorch.org/whl/torch_stable.html`, the version of Python should be below 3.9 and above 3.7 due to some new operatiors in the Bao Server. Python 3.8.15 works in my local machine.
 4. In addition to the packages and libraries mentioned on the tutorial, we need to install `psycopg2` as well.
