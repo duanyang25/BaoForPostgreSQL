@@ -1,10 +1,11 @@
-0. Only Postgresql 12 works under the current implementation. The VM version of loading dataset does not work. I installed an Ubuntu system, set up Postgresql 12 locally and manually loaded the dataset.
+0. Only Postgresql 12 works under the current implementation. The VM version of loading dataset does not work. I installed an Ubuntu system, set up Postgresql 12 locally and manually loaded the dataset. 
 ```shell
 # https://stackoverflow.com/a/26735105
 # loggin Postgresql for the first time
 sudo gedit /etc/postgresql/12/main/pg_hba.conf
 ```
-Then you can set the `postgres` user by `psql -U postgres` to log in and add the `imdb` user and create the `imdb` database.
+Then you can set the `postgres` user by `psql -U postgres` to log in and add the `imdb` user and create the `imdb` database.   
+I also change the line of pg_hba.conf from `local   all             all                                md5` to `local   all             all                                trust` to allow the access to the database `imdb` and the user `imdb` without password. (Do not forget to create the `imdb` user and its `imdb` database after you log in postgresql as `postgres` user.)
 ```shell
 # edit shared_buffers
 sudo gedit /etc/postgresql/12/main/postgresql.conf
@@ -41,3 +42,12 @@ to load the built extension from above operation.
 ```shell
 pip3 install psycopg2
 ```
+5. When running the workload, we need to change the 8th line of run_queries.py under the root folder from 
+```python3
+PG_CONNECTION_STR = "dbname=imdb user=imdb host=localhost"
+``` 
+to 
+```python3
+PG_CONNECTION_STR = "dbname=imdb user=imdb"
+```
+so that we do not need to provide the password, take a look at https://stackoverflow.com/a/23871618
