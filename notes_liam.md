@@ -68,3 +68,8 @@ PostgreSQLConnectString = dbname=imdb user=imdb host=/var/run/postgresql
 ```
 since the socket locates on `/var/run/postgresql/.s.PGSQL.5432`
 take a look at https://www.psycopg.org/docs/module.html#psycopg2.connect and https://stackoverflow.com/a/5500831
+7. For "Bao as an advisor", use 
+```shell
+psql -U imdb
+```
+instead to log in postgresql if you did not set password for the `imdb` user.
