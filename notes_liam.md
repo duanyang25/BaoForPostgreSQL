@@ -49,6 +49,22 @@ PG_CONNECTION_STR = "dbname=imdb user=imdb host=localhost"
 ``` 
 to 
 ```python3
-PG_CONNECTION_STR = "dbname=imdb user=imdb"
+PG_CONNECTION_STR = "dbname=imdb user=imdb
 ```
-so that we do not need to provide the password, take a look at https://stackoverflow.com/a/23871618
+Or
+```python3
+PG_CONNECTION_STR = "dbname=imdb user=imdb host=/var/run/postgresql"
+```
+, this depends on the setting on your local machine since the default host is `/tmp/.s.PGSQL.5432` if you do not specify the `host`.   
+With this change, we do not need to provide the password, take a look at https://stackoverflow.com/a/23871618
+6. For the Exploration Mode, I need to change the value of PostgreSQLConnectString of `bao_server/bao.cfg` file
+from 
+```
+PostgreSQLConnectString = user=imdb
+```
+to 
+```
+PostgreSQLConnectString = dbname=imdb user=imdb host=/var/run/postgresql
+```
+since the socket locates on `/var/run/postgresql/.s.PGSQL.5432`
+take a look at https://www.psycopg.org/docs/module.html#psycopg2.connect and https://stackoverflow.com/a/5500831

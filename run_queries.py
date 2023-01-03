@@ -6,7 +6,7 @@ from time import time, sleep
 
 USE_BAO = True
 # PG_CONNECTION_STR = "dbname=imdb user=imdb host=localhost"
-PG_CONNECTION_STR = "dbname=imdb user=imdb"
+PG_CONNECTION_STR = "dbname=imdb user=imdb host=/var/run/postgresql"
 
 # https://stackoverflow.com/questions/312443/
 def chunks(lst, n):
