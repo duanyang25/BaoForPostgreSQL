@@ -1,4 +1,4 @@
-0. Only Postgresql 12 works under the current implementation. The VM version of loading dataset does not work. I installed an Ubuntu system, set up Postgresql 12 locally and manually loaded the dataset. 
+0. Only Postgresql 12 works under the current implementation. The VM version of loading dataset does not work. I installed an Ubuntu 22.04 system, set up Postgresql 12 locally and manually loaded the dataset. 
 ```shell
 # https://stackoverflow.com/a/26735105
 # loggin Postgresql for the first time
