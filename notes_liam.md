@@ -42,6 +42,7 @@ to load the built extension from above operation.
 ```shell
 pip3 install psycopg2
 ```
+(in the following analysises on the tutorial, you need to install jupyter lab or notebook, matplotlib, and pandas as well)
 5. When running the workload, we need to change the 8th line of run_queries.py under the root folder from 
 ```python3
 PG_CONNECTION_STR = "dbname=imdb user=imdb host=localhost"
