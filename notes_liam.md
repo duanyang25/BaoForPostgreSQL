@@ -36,13 +36,13 @@ So we need to use
 echo "shared_preload_libraries = 'pg_bao'" >> /etc/postgresql/12/main/postgresql.conf
 ```
 or manually append `shared_preload_libraries = 'pg_bao'` at the end of `/etc/postgresql/12/main/postgresql.conf` file.
-to load the built extension from above operation.
-3. In order to install `torch==1.5.0+cpu` from `-f https://download.pytorch.org/whl/torch_stable.html`, the version of Python should be below 3.9 and above 3.7 due to some new operatiors in the Bao Server. Python 3.8.15 works in my local machine.
+to load the built extension from above operation.    
+3. In order to install `torch==1.5.0+cpu` from `-f https://download.pytorch.org/whl/torch_stable.html`, the version of Python should be below 3.9 and above 3.7 due to some new operatiors in the Bao Server. Python 3.8.15 works in my local machine.     
 4. In addition to the packages and libraries mentioned on the tutorial, we need to install `psycopg2` as well.
 ```shell
 pip3 install psycopg2
 ```
-(in the following analysises on the tutorial, you need to install jupyter lab or notebook, matplotlib, and pandas as well)
+(in the following analysises on the tutorial, you need to install jupyter lab or notebook, matplotlib, and pandas as well)    
 5. When running the workload, we need to change the 8th line of run_queries.py under the root folder from 
 ```python3
 PG_CONNECTION_STR = "dbname=imdb user=imdb host=localhost"
@@ -56,7 +56,7 @@ Or
 PG_CONNECTION_STR = "dbname=imdb user=imdb host=/var/run/postgresql"
 ```
 , this depends on the setting on your local machine since the default host is `/tmp/.s.PGSQL.5432` if you do not specify the `host`.   
-With this change, we do not need to provide the password, take a look at https://stackoverflow.com/a/23871618
+With this change, we do not need to provide the password, take a look at https://stackoverflow.com/a/23871618    
 6. For the Exploration Mode, I need to change the value of PostgreSQLConnectString of `bao_server/bao.cfg` file
 from 
 ```
@@ -67,7 +67,7 @@ to
 PostgreSQLConnectString = dbname=imdb user=imdb host=/var/run/postgresql
 ```
 since the socket locates on `/var/run/postgresql/.s.PGSQL.5432`
-take a look at https://www.psycopg.org/docs/module.html#psycopg2.connect and https://stackoverflow.com/a/5500831
+take a look at https://www.psycopg.org/docs/module.html#psycopg2.connect and https://stackoverflow.com/a/5500831    
 7. For "Bao as an advisor", use 
 ```shell
 psql -U imdb
