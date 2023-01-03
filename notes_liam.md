@@ -42,7 +42,7 @@ to load the built extension from above operation.
 ```shell
 pip3 install psycopg2
 ```
-(in the following analysises on the tutorial, you need to install jupyter lab or notebook, matplotlib, and pandas as well)    
+(in the following analyses on the tutorial, you need to install jupyter lab or notebook, matplotlib, and pandas as well)    
 5. When running the workload, we need to change the 8th line of run_queries.py under the root folder from 
 ```python3
 PG_CONNECTION_STR = "dbname=imdb user=imdb host=localhost"
@@ -72,4 +72,5 @@ take a look at https://www.psycopg.org/docs/module.html#psycopg2.connect and htt
 ```shell
 psql -U imdb
 ```
-instead to log in postgresql if you did not set password for the `imdb` user.
+instead to log in postgresql if you did not set password for the `imdb` user.   
+PS: On my local machine, the Bao prediction is always NaN and the Bao recommendation is always (No hints) as the output of `Explain` in postgresql although the analyses of workloads are corect (similar to the graphs on the tutorial).
